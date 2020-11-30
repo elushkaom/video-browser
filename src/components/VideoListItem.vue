@@ -3,7 +3,7 @@
     <li class="list-group-item media" @click="onVideoSelect">
       <img :src="thumbnailUrl" alt="thumbnail" class="mr-3" />
       <div class="media-body">
-        {{ video.snippet.title }}
+        {{ videoTitle }}
       </div>
     </li>
   </ol>
@@ -18,11 +18,13 @@ export default {
   computed: {
     thumbnailUrl() {
       return this.video.snippet.thumbnails.default.url;
+    },
+    videoTitle() {
+      return this.$sanitize(this.video.snippet.title);
     }
   },
   methods: {
     onVideoSelect() {
-      console.log(this.video);
       this.$emit("videoSelect", this.video);
     }
   }
@@ -32,6 +34,7 @@ export default {
 <style scoped>
 li {
   display: flex;
+  flex-flow: row wrap;
   cursor: pointer;
 }
 

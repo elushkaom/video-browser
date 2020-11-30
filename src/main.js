@@ -3,6 +3,10 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 
+import VueSanitize from "vue-sanitize";
+
+Vue.use(VueSanitize);
+
 Vue.config.productionTip = false;
 
 new Vue({

@@ -1,8 +1,10 @@
 <template>
   <div id="app" class="container">
     <SearchBar @termChange="onTermChange" />
-    <VideoDetail :video="selectedVideo" />
-    <VideoList @videoSelect="onVideoSelect" :videos="videos" />
+    <div class="row">
+      <VideoList @videoSelect="onVideoSelect" :videos="videos" />
+      <VideoDetail :video="selectedVideo" />
+    </div>
   </div>
 </template>
 
@@ -32,7 +34,6 @@ export default {
   },
   methods: {
     onVideoSelect(video) {
-      console.log("newVideo 2", video);
       this.selectedVideo = video;
     },
     onTermChange(searchTerm) {
