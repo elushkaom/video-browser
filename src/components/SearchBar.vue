@@ -1,6 +1,6 @@
 <template>
   <div>
-    <input type="text" @input="onInput" />
+    <input type="text" @keyup.enter="onInput" />
   </div>
 </template>
 

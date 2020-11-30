@@ -12,8 +12,6 @@ import SearchBar from "./components/SearchBar";
 import VideoList from "./components/VideoList";
 import VideoDetail from "./components/VideoDetail";
 
-const API_KEY = "AIzaSyDxkKpJhXkyexojzfaVwM5FwagpxPT0wq8";
-
 export default {
   name: "App",
   components: {
@@ -27,15 +25,21 @@ export default {
       selectedVideo: null
     };
   },
+  computed: {
+    getApiKey() {
+      return process.env.VUE_APP_API_KEY;
+    }
+  },
   methods: {
     onVideoSelect(video) {
+      console.log("newVideo 2", video);
       this.selectedVideo = video;
     },
     onTermChange(searchTerm) {
       axios
         .get("https://www.googleapis.com/youtube/v3/search", {
           params: {
-            key: API_KEY,
+            key: this.getApiKey,
             type: "video",
             part: "snippet",
             q: searchTerm
